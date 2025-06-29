@@ -1,30 +1,49 @@
 # mq3_sensor_reader.ino
-#define MQ3pin A0  // MQ3 sensor connected to analog pin A0
 
-float sensorValue;
+# 🍷 MQ3 Alcohol Sensor – Arduino Reader
 
-int x; // variable to store sensor value
+This project reads alcohol levels using the **MQ3 gas sensor** and prints the scaled value to the serial monitor using an Arduino UNO.
 
-void setup() {
+---
 
-  Serial.begin(9600); 
-  // Initialize serial communication
-  
-  Serial.println("MQ3 warming up!");
-  
-  delay(20000);
-  // Allow the MQ3 to warm up
-}
+## 🔧 Hardware Required
 
-void loop() {
-  sensorValue = analogRead(MQ3pin);
-  // Read analog value
-  x = sensorValue / 30; 
-  // Simple scaling for demo
+- Arduino UNO
+- MQ3 Alcohol Sensor Module
+- Jumper Wires
 
-  Serial.print("Sensor Value: ");
-  Serial.println(x);
+---
 
-  delay(2000); 
-  // Wait 2s for next reading
-}
+## 🔌 Connections
+
+| MQ3 Sensor Pin | Arduino Pin |
+|----------------|-------------|
+| VCC            | 5V          |
+| GND            | GND         |
+| AOUT           | A0          |
+
+---
+
+## 🧪 Working
+
+- The MQ3 sensor detects alcohol concentration in the air.
+- The analog signal is read from pin `A0`.
+- The code waits 20 seconds for sensor warm-up.
+- Sensor values are printed every 2 seconds.
+
+---
+
+## 🗂️ Files
+
+- `code/mq3_sensor_reader.ino` – Main Arduino sketch
+
+---
+
+## 📈 Output Example
+
+```text
+MQ3 warming up!
+Sensor Value: 10
+Sensor Value: 12
+Sensor Value: 14
+
